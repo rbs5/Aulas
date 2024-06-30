@@ -1,0 +1,67 @@
+# Configuração Inicial
+
+git config --global user.name "Seu Nome"
+git config --global user.email "seu.email@example.com"
+
+#Criação e Inicialização de Repositório
+
+git init        # Inicializa um novo repositório Git
+git clone <url> # Clona um repositório remoto
+
+#Status e Informações
+
+git status      # Mostra o status atual do repositório
+git log         # Mostra o histórico de commits
+git diff        # Mostra as mudanças não staged
+git diff --staged # Mostra as mudanças staged
+
+#Trabalhando com Commits 
+
+git add <arquivo>  # Adiciona um arquivo para o staging
+git add .          # Adiciona todos os arquivos para o staging
+git commit -m "Mensagem do commit" # Faz commit dos arquivos staged com uma mensagem
+git commit --amend -m "Nova mensagem" # Emenda o último commit com uma nova mensagem
+
+#Trabalhando com Branches
+
+git branch                # Lista todas as branches
+git branch <nome-da-branch> # Cria uma nova branch
+git checkout <nome-da-branch> # Muda para uma branch específica
+git checkout -b <nome-da-branch> # Cria e muda para uma nova branch
+git merge <nome-da-branch> # Faz merge de uma branch para a branch atual
+git branch -d <nome-da-branch> # Deleta uma branch local
+
+#Trabalhando com Repositórios Remotos
+
+git remote add origin <url> # Adiciona um repositório remoto
+git remote -v               # Lista os repositórios remotos
+git fetch                   # Busca atualizações do repositório remoto
+git pull                    # Faz pull das mudanças do repositório remoto e integra com a branch atual
+git push origin <nome-da-branch> # Faz push da branch atual para o repositório remoto
+
+#Revertendo Mudanças
+
+git checkout -- <arquivo> # Desfaz mudanças locais no arquivo (não staged)
+git reset HEAD <arquivo>  # Remove um arquivo do staging
+git reset --soft HEAD~1   # Desfaz o último commit, mantendo mudanças no staging
+git reset --hard HEAD~1   # Desfaz o último commit e remove mudanças
+git revert <commit>       # Cria um novo commit que reverte um commit específico
+
+#Excluindo Arquivos e Pastas
+
+git rm <arquivo>             # Remove um arquivo e faz commit
+git rm -r <pasta>            # Remove uma pasta e faz commit
+git rm --cached <arquivo>    # Remove um arquivo do controle do Git, mas mantém no sistema de arquivos
+
+#Comandos Adicionais
+
+git stash                    # Salva temporariamente mudanças não commitadas
+git stash apply              # Reaplica mudanças salvas no stash
+git stash pop                # Aplica e remove a última stash
+git stash list               # Lista todas as stashes
+
+#Anotações Especiais
+
+git tag <tagname>            # Cria uma tag
+git tag -a <tagname> -m "Mensagem da tag" # Cria uma tag anotada
+git show <tagname>           # Mostra detalhes de uma tag
