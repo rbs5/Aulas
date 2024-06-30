@@ -1,0 +1,39 @@
+import win32com.client
+import pywintypes
+import pyautogui
+import time
+
+# Crie uma instância do Excel
+excel = win32com.client.Dispatch("Excel.Application")
+excel.Visible = True
+
+# Abre o arquivo Excel
+caminho_arquivo = "C:/Users/Rodrigo/Desktop/Pasta1.xlsx"
+workbook = excel.Workbooks.Open(caminho_arquivo)
+
+# Selecione a planilha ativa (pode ser necessário ajustar o nome da planilha)
+planilha = workbook.ActiveSheet
+
+# Itera sobre as células na coluna A de A1 até A100
+for linha_atual in range(1, 101):
+    # Seleciona a célula
+    planilha.Cells(linha_atual, 1).Select()
+
+    try:
+        # Tenta ativar a janela do Excel usando pywin32
+        win32com.client.GetActiveObject("Excel.Application").Activate()
+    except pywintypes.com_error:
+        pass  # Ignora erros caso não consiga ativar a janela
+
+    # Simula o pressionar F2 usando pyautogui
+    pyautogui.hotkey('f2')
+
+    # Aguarda um momento para garantir que a célula seja processada
+    time.sleep(0.5)
+
+# Salva e fecha o arquivo Excel
+workbook.Save()
+workbook.Close(SaveChanges=True)
+
+# Fecha a instância do Excel
+excel.Quit()

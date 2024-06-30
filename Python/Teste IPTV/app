@@ -1,0 +1,38 @@
+import requests
+
+# Replace with your actual credentials
+username = "Rodrigo0004"
+password = "Ml512421"
+
+base_url = "https://office.cloudnation.vip/login/"
+login_url = f"{base_url}/login"
+logout_url = f"{base_url}/logout"
+test_url = f"{base_url}/test"
+
+# Log in to the panel
+login_data = {
+    "username": "UxoyvLwsxOtb",
+    "password": "QKhhcM8NttvF",
+}
+response = requests.post(login_url, data=login_data)
+
+# Check if login is successful (status code 200)
+if response.status_code == 200:
+    print("Login successful")
+
+    # Generate a test case
+    response = requests.get(test_url)
+    if response.status_code == 200:
+        print("Test case executed successfully")
+        print("Response:", response.json())
+    else:
+        print(f"Test case failed. Status code: {response.status_code}")
+else:
+    print("Login failed")
+
+# Log out
+response = requests.post(logout_url)
+if response.status_code == 200:
+    print("Logout successful")
+else:
+    print("Logout failed")
